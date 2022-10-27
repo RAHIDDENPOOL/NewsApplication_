@@ -11,8 +11,9 @@ interface NewsService {
         @Query("page") page: Int = 1,
         @Query("apiKey") apiKey: String = API_KEY
     )
+
     suspend fun getHeadLines(
-        @Query("Country") countryCode:String = "ru",
+        @Query("Country") countryCode: String = "ru",
         @Query("page") page: Int = 1,
         @Query("apiKey") apiKey: String = API_KEY
     )
