@@ -1,8 +1,6 @@
 package com.example.newsapp
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -23,13 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.fragment_splash)
-        /* Handler(Looper.myLooper()!!).postDelayed({
-            setContentView(mBinding.root)
-            mBinding.bottomNavMenu.setupWithNavController(
-                navController = findNavController(R.id.nav_host_fragment)
-            )
-        }, 3000)
-    */
+
         CoroutineScope(Dispatchers.Main).launch {
             delay(5000)
             setContentView(mBinding.root)
@@ -40,7 +32,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    /* Handler(Looper.myLooper()!!).postDelayed({
+              setContentView(mBinding.root)
+              mBinding.bottomNavMenu.setupWithNavController(
+                  navController = findNavController(R.id.nav_host_fragment)
+              )
+          }, 3000)
+      */
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
