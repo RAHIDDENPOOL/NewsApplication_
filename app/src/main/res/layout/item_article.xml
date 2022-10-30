@@ -9,6 +9,7 @@
     android:id="@+id/reCyclerView">
 
     <ImageView
+
         android:clipToOutline="true"
         android:id="@+id/article_image"
         android:layout_width="88dp"
