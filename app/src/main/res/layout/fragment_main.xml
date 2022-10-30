@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:clipToPadding="false"
-        android:paddingBottom="50dp"
+        android:paddingBottom="150dp"
         app:flow_horizontalBias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="12dp"
-    android:id="@+id/reCyclerView">
+    android:layout_marginVertical="12dp">
 
-    <ImageView
-
-        android:clipToOutline="true"
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/article_image"
         android:layout_width="88dp"
         android:layout_height="84dp"
+        android:adjustViewBounds="true"
+        android:clipToOutline="false"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/secondStyle"
+        tools:ignore="ContentDescription"
         tools:targetApi="s" />
 
     <LinearLayout
@@ -39,7 +40,7 @@
 
         <TextView
             android:id="@+id/article_tittle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="3"
@@ -47,6 +48,7 @@
             android:textColor="@color/greyBlack"
             android:textFontWeight="700"
             android:textSize="12sp"
+            android:textStyle="bold"
             tools:targetApi="p" />
 
     </LinearLayout>
@@ -55,11 +57,12 @@
         android:id="@+id/icon_favorite"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="50dp"
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/article_info"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
 
@@ -68,6 +71,8 @@
         android:layout_marginStart="17dp"
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon_favorite"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
