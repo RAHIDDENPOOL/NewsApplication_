@@ -6,14 +6,13 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
-import com.example.newsapp.R
 import com.example.newsapp.databinding.ItemArticleBinding
 
 import com.example.newsapp.models.Article
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
-    inner class NewsViewHolder(val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class NewsViewHolder(val binding: ItemArticleBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 
     private val callback = object : DiffUtil.ItemCallback<Article>() {
@@ -29,21 +28,26 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     val differ = AsyncListDiffer(this, callback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        return NewsViewHolder(ItemArticleBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return NewsViewHolder(
+            ItemArticleBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val article = differ.currentList[position]
 
-        holder.binding.articleData.text = article.title
-        holder.binding.articleData.text=article.publishedAt
+        holder.binding.articleTittle.text = article.title
+        holder.binding.articleData.text = article.publishedAt
+        holder.binding.articleImage
 
         holder.itemView.apply {
-            //article_title.text = article.title // Депрекейтед
-            //article_date.text = article.publishedAt // Депрекейтед
-            Glide.with(this).load(article.urlToImage).into(R.id.article_image)
-            setOnClickListener {
+            Glide.with(this).load(article.urlToImage).into(holder.binding.articleImage)
 
+            setOnClickListener {
                 onItemClickListener?.let { it(article) }
             }
         }
@@ -58,8 +62,4 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     fun setOnItemClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
     }
-}
-
-private fun <TranscodeType> RequestBuilder<TranscodeType>.into(i: Int) {
-
 }
