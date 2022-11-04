@@ -23,12 +23,12 @@ class MainFragment : Fragment() {
     private val eBinding get() = _binding!!
 
     private val viewModel by viewModels<MainViewModel>()
-    lateinit var newsAdapter: NewsAdapter // создаю адаптер
+    private lateinit var newsAdapter: NewsAdapter // создаю адаптер
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         return eBinding.root
     }
@@ -44,7 +44,6 @@ class MainFragment : Fragment() {
                 bundle
             )
         }
-
 
         viewModel.newsLiveData.observe(viewLifecycleOwner) { responce ->
             when (responce) {
@@ -78,4 +77,5 @@ class MainFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
         }
     }
+
 }
