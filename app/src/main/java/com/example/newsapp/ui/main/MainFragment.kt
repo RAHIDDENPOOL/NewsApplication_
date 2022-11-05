@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.findFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentMainBinding
 import com.example.newsapp.ui.adapters.NewsAdapter
+import com.example.newsapp.ui.details.DetailsFragment
 import com.example.newsapp.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +38,9 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-        // переход на DetailsFragment Создал аргумент в nav_graph, добавил в конструктор article ":Serializable"
+        /*newsAdapter.setOnItemClickListener { val bundle = bundleOf("articles" to it)
+        view.findFragment<DetailsFragment>()}*/
+        // переход на DetailsFragment через аргумент в nav_graph, добавил в конструктор article ":Serializable"
         newsAdapter.setOnItemClickListener {
             val bundle = bundleOf("article" to it)
             view.findNavController().navigate(
