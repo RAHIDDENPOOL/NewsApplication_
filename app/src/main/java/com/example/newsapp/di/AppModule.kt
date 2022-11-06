@@ -43,6 +43,8 @@ object AppModule {
             .build()
             .create(NewsService::class.java)
 
+    @Provides
+    @Singleton
     fun provideArticleDataBase(@ApplicationContext context: Context) =
         Room.databaseBuilder(
             context,
@@ -50,6 +52,7 @@ object AppModule {
         )
             .build()
 
+    @Provides
     fun provideArticleDaot(appDataBase: ArticleDataBase): ArticleDao {
         return appDataBase.getArticleDao()
     }
